@@ -89,13 +89,13 @@ SAVE_DATA_OPTION = "jsonl"  # csv or db or json or jsonl or sqlite or excel or p
 SAVE_DATA_PATH = ""
 
 # Browser file configuration cached by the user's browser
-USER_DATA_DIR = "%s_user_data_dir"  # %s will be replaced by platform name
+USER_DATA_DIR = "xhs_user_data_dir"  # 共享登录态：7 平台共用同一资料目录（配合 CDP 常驻浏览器）
 
 # The number of pages to start crawling starts from the first page by default
 START_PAGE = 1
 
 # Control the number of crawled videos/posts
-CRAWLER_MAX_NOTES_COUNT = 15
+CRAWLER_MAX_NOTES_COUNT = 20
 
 # Controlling the number of concurrent crawlers
 MAX_CONCURRENCY_NUM = 1

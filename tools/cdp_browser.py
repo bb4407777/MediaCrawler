@@ -257,7 +257,7 @@ class CDPBrowserManager:
             user_data_dir = os.path.join(
                 os.getcwd(),
                 "browser_data",
-                f"cdp_{config.USER_DATA_DIR % config.PLATFORM}",
+                config.USER_DATA_DIR,
             )
             os.makedirs(user_data_dir, exist_ok=True)
             utils.logger.info(f"[CDPBrowserManager] User data directory: {user_data_dir}")
@@ -319,7 +319,7 @@ class CDPBrowserManager:
                 # For existing browser (e.g. chrome://inspect/#remote-debugging),
                 # Chrome exposes a WebSocket at /devtools/browser and may show a confirmation
                 # dialog to the user. Use ws:// with a longer timeout to wait for user confirmation.
-                ws_url = f"ws://localhost:{self.debug_port}/devtools/browser"
+                ws_url = f"http://localhost:{self.debug_port}"  # playwright 自解析 /json/version，规避新版 Chromium 不带 UUID 的 ws:// URL 失败
                 utils.logger.info(f"[CDPBrowserManager] Connecting to existing browser via CDP: {ws_url}")
                 utils.logger.info(
                     "[CDPBrowserManager] Please check your browser for a confirmation dialog and accept it"
